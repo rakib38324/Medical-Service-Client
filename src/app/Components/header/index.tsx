@@ -8,6 +8,7 @@ import ThemeToggle from "../Theme/ThemeToggle";
 import { IoMdSettings } from "react-icons/io";
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
+import PrimaryButton from "../common/PrimaryButton";
 
 const Navbar = () => {
   const [settingPopUp, setSettingPopUp] = useState(false);
@@ -22,7 +23,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="py-[1rem] sticky top-0 w-full z-50 ">
+    <div className="py-[1rem] w-full z-50 ">
       <div className="relative max-w-screen-xl mx-auto px-5 lg:px-0 flex items-center justify-between">
         <div className="flex gap-10">
           <Link href="/" className="flex gap-1">
@@ -61,17 +62,18 @@ const Navbar = () => {
           </nav>
         </div>
 
-        <div className=" flex justify-between mx-5">
+        <div className="hidden md:flex justify-between mx-5">
           <div className="flex justify-between gap-6 text-base">
             <Link href={"/login"} className="my-auto font-bold dark:text-textDark">
               LOGIN
             </Link>
-            <Link
+            {/* <Link
               href={"/register"}
               className="px-10 py-2 bg-secondary rounded-3xl text-white dark:text-textDark font-bold"
             >
               REGISTER
-            </Link>
+            </Link> */}
+            <PrimaryButton text="REGISTER" textColor="text-white" darkTextColor="text-text-Dark" bgColor="bg-secondary" />
             <span className="border-[1px] border-gray-300 my-2"></span>
             <IoMdSettings
               onClick={() => setSettingPopUp(!settingPopUp)}
@@ -83,7 +85,7 @@ const Navbar = () => {
         {/* -----------------Setting Popup-------------------------- */}
 
         {settingPopUp && (
-          <div className="absolute top-16 right-4 w-80 h-32 bg-white dark:bg-paperDark border dark:text-textDark shadow-md ">
+          <div className="absolute top-16 right-4 w-80 h-32 bg-white dark:bg-paperDark border dark:text-textDark shadow-md z-20">
             <div className=" w-1/4 h-32 bg-primary">
               <div className="absolute top-2 left-12 ">
                 <div className="flex gap-3">
