@@ -1,22 +1,73 @@
+"use client";
 import Image from "next/image";
-import banner1 from'@/assetes/bg-1.png'
+import banner1 from "@/assetes/bg-1.png";
 import PrimaryButton from "../common/PrimaryButton";
+import { useEffect, useState } from "react";
 
 export default function Banner() {
+  interface CarouselItem {
+    src: string;
+    alt: string;
+  }
+
+  const carouselItems: CarouselItem[] = [
+    { src: "banner1", alt: "Slide 1" },
+    { src: "banner1", alt: "Slide 2" },
+    { src: "banner1", alt: "Slide 3" },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Automatically change slides every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+
+    // Clear interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
+
+  const goToPrevious = () => {
+    setCurrentIndex(
+      currentIndex === 0 ? carouselItems.length - 1 : currentIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentIndex(
+      currentIndex === carouselItems.length - 1 ? 0 : currentIndex + 1
+    );
+  };
+
   return (
     <div className="max-w-[1434px] mx-auto relative ">
-        <div className="max-w-screen-xl mx-auto pt-20 z-50">
-            <p className="text-5xl font-bold dark:text-textDark">Lorem ipsum dolor amet</p>
-            <p className="text-3xl font-normal text-textSecondary dark:text-gray-300 w-1/2 mt-10">Nam sollicitud nunc, cursus eros vulputate sed. Vestibulum lobortis.</p>
-            
-            <div className="mt-10 flex gap-5">
-                <p className="text-secondary my-auto font-bold dark:text-secondaryLight dark:font-normal">MORE INFOR</p>
-                <PrimaryButton text="REGISTER NOW" textColor="text-white" darkTextColor="text-textDark" bgColor="bg-primary" />
-            </div>
+      
+      <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20  p-2">
+        <p className="text-3xl md:text-5xl font-bold dark:text-textDark">
+          Lorem ipsum dolor amet
+        </p>
+        <p className="text-xl font-normal text-textSecondary dark:text-gray-300 md:w-1/2 mt-5 md:mt-10">
+          Nam sollicitud nunc, cursus eros vulputate sed. Vestibulum lobortis.
+        </p>
+
+        <div className="mt-10 flex gap-5">
+          <p className="text-secondary my-auto font-bold dark:text-secondaryLight dark:font-normal">
+            MORE INFOR
+          </p>
+          <PrimaryButton
+            text="REGISTER NOW"
+            textColor="text-white"
+            darkTextColor="text-textDark"
+            bgColor="bg-primary"
+          />
         </div>
-      <div className="">
+      </div>
+      <div className="-z-10">
         <svg
-          className="absolute -top-24 right-0 -z-50"
+          className="w-1/2 md:w-2/3 absolute -top-24 right-0 -z-50"
           width="700"
           height="352"
           viewBox="0 0 700 352"
@@ -47,7 +98,7 @@ export default function Banner() {
         </svg>
 
         <svg
-         className="absolute -top-24 right-0 -z-10"
+          className="w-2/3 md:w-1/2 absolute -top-96 md:-top-80 lg:-top-24 right-0 -z-10"
           width="644"
           height="960"
           viewBox="0 0 644 960"
@@ -74,12 +125,13 @@ export default function Banner() {
             </linearGradient>
           </defs>
         </svg>
-        
 
-        <div className="absolute top-0 right-0">
-            <Image className="w-[620px]" src={banner1} alt="Banner-1" />
+        <div className="absolute top-0 right-0 -z-10 ">
+          <Image className="md:w-full lg:w-[620px]" src={banner1} alt="Banner-1" />
         </div>
       </div>
+
+      
     </div>
   );
 }

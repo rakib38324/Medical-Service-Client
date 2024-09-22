@@ -62,7 +62,7 @@ const Navbar = () => {
           </nav>
         </div>
 
-        <div className=" flex justify-between mx-5">
+        <div className="hidden md:flex justify-between mx-5">
           <div className="flex justify-between gap-6 text-base">
             <Link href={"/login"} className="my-auto font-bold dark:text-textDark">
               LOGIN
