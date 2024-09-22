@@ -44,7 +44,6 @@ export default function Banner() {
 
   return (
     <div className="max-w-[1434px] mx-auto relative ">
-      
       <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20  p-2">
         <p className="text-3xl md:text-5xl font-bold dark:text-textDark">
           Lorem ipsum dolor amet
@@ -64,7 +63,45 @@ export default function Banner() {
             bgColor="bg-primary"
           />
         </div>
+
+        <div className="mt-10 md:mt-20 lg:mt-36 lg:w-11/12 mx-auto lg:flex gap-10 justify-around">
+          <div className="group">
+            <p className="text-3xl dark:text-textDark group-hover:text-primary transition-colors duration-300">
+              Business Solution
+            </p>
+            <p className="text-lg dark:text-textDark">Interdum et malesuada fames ac ante…</p>
+            <span
+              className={`block border-[3px] w-1/2 border-primary rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+            ></span>
+          </div>
+
+          <span className="my-2 border-2 bg-primary"></span>
+
+          <div className="group">
+            <p className="text-3xl dark:text-textDark group-hover:text-primary transition-colors duration-300">
+              Business Solution
+            </p>
+            <p className="text-lg dark:text-textDark">Interdum et malesuada fames ac ante…</p>
+            <span
+              className={`block border-[3px] w-1/2 border-primary rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+            ></span>
+          </div>
+
+          <span className="my-2 border-2 bg-primary"></span>
+
+          <div className="group">
+            <p className="text-3xl dark:text-textDark group-hover:text-primary transition-colors duration-300">
+              Business Solution
+            </p>
+            <p className="text-lg dark:text-textDark">Interdum et malesuada fames ac ante…</p>
+            <span
+              className={`block border-[3px] w-1/2 border-primary rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+            ></span>
+          </div>
+        </div>
       </div>
+
+      {/* ---------------------------background images */}
       <div className="-z-10">
         <svg
           className="w-1/2 md:w-2/3 absolute -top-24 right-0 -z-50"
@@ -126,12 +163,14 @@ export default function Banner() {
           </defs>
         </svg>
 
-        <div className="absolute top-0 right-0 -z-10 ">
-          <Image className="md:w-full lg:w-[620px]" src={banner1} alt="Banner-1" />
+        <div className="absolute top-0 right-0 md:top-12 md:-right-0 lg:top-0 lg:right-0 -z-10 ">
+          <Image
+            className="md:w-11/12 lg:w-[620px]"
+            src={banner1}
+            alt="Banner-1"
+          />
         </div>
       </div>
-
-      
     </div>
   );
 }
