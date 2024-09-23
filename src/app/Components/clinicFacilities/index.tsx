@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
-import CleinetFacilitiesCarusole from "./clientfacilitiesCarousel";
+import CleinetFacilitiesCarusole from "./clinicFacilitiesCarousel";
 
-export default function ClientFacilities() {
+export default function ClinicFacilities() {
   return (
     <div className="max-w-[1440px] mx-auto my-20  md:h-[700px] relative">
       <div className="p-1 md:pl-10 lg:pl-24 pt-32">

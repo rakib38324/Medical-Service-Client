@@ -8,6 +8,7 @@ import Image from "next/image";
 import d1 from "@/assetes/d-1.png";
 import d2 from "@/assetes/d-1.png";
 import d3 from "@/assetes/d-1.png";
+import bg6 from "@/assetes/bg-6.png";
 
 export default function AskDoctors() {
   const [navigator, setNavigator] = useState(1);
@@ -129,7 +130,7 @@ export default function AskDoctors() {
   const selectedSpecialist = specialists.find((spec) => spec.id === navigator);
 
   return (
-    <div className="max-w-screen-xl mx-auto my-10 md:my-20 grid md:grid-cols-5 p-1">
+    <div className="max-w-screen-xl mx-auto my-10 md:my-20 grid md:grid-cols-5 p-1 relative">
       <div className="md:col-span-1">
         <p className="text-3xl my-4 md:text-5xl font-bold dark:text-textDark">
           Ask <br /> Doctors
@@ -141,7 +142,7 @@ export default function AskDoctors() {
               <p
                 key={spec.id}
                 onClick={() => setNavigator(spec.id)}
-                className={`w-2/3 md:w-full lg:w-2/3 my-5 border hover:bg-primary rounded-xl pl-4 hover:cursor-pointer ${
+                className={`w-2/3 md:w-full lg:w-2/3 my-10 text-xl dark:text-textDark border hover:bg-primary rounded-xl pl-4 hover:cursor-pointer ${
                   navigator === spec.id && "bg-primary"
                 }`}
               >
@@ -153,24 +154,23 @@ export default function AskDoctors() {
         )}
       </div>
 
-
-      <div className="md:col-span-4 grid lg:grid-cols-2 gap-20 pl-10  pt-10 md:pt-0">
+      <div className="md:col-span-4 grid lg:grid-cols-2 gap-10 pl-10  pt-10 md:pt-0">
         {selectedSpecialist?.doctors?.map((doctor) => (
           <div
             key={doctor.id}
-            className="relative h-44 bg-defaultWhite dark:bg-paperDark rounded-lg p-4 my-4"
+            className="relative h-44 bg-defaultWhite dark:bg-paperDark rounded-lg p-4 mx-5"
           >
             <div className="absolute -top-8 -left-8 size-20">
               <Image
                 width={200}
                 height={200}
                 className="rounded-full rounded-tl-none bg-secondaryLight"
-                src={ doctor?.img ? doctor?.img : "/"} // You can dynamically set doctor image if available
+                src={doctor?.img ? doctor?.img : "/"} // You can dynamically set doctor image if available
                 alt={doctor.name}
               />
             </div>
             <div className="ml-10 ">
-              <p className="text-xl text-textPrimary dark:text-textDark">
+              <p className="text-xl font-bold text-textPrimary dark:text-textDark">
                 {doctor.name}
               </p>
               <p className="my-2 text-textSecondary dark:text-textDark">
@@ -188,12 +188,20 @@ export default function AskDoctors() {
                 <p className="my-auto">{doctor.experience} Year</p>
               </div>
 
-              <PrimaryButton text="CHAT" link="/chat" bgColor="bg-secondary" darkTextColor="dark:text-textDark" />
+              <PrimaryButton
+                text="CHAT"
+                link="/chat"
+                bgColor="bg-secondary"
+                darkTextColor="dark:text-textDark"
+              />
             </div>
           </div>
         ))}
+      </div>
 
-        
+      {/* Vackground images */}
+      <div className="absolute right-0 bottom-0 -z-10">
+        <Image src={bg6} alt="background" />
       </div>
     </div>
   );
