@@ -372,15 +372,7 @@ const BannerCarousel = () => {
           {slide}
         </div>
       ))}
-      {/* Navigation Buttons */}
-      {/* <div className="absolute left-5 right-5  top-56 md:top-60 flex -translate-y-1/2 transform justify-between items-center bg-red-600 z-0">
-        <button onClick={goToPrevSlide} className="btn btn-circle text-2xl px-4 py-1 border border-gray-600 dark:border-gray-100 rounded-full dark:text-textDark">
-          ❮
-        </button>
-        <button onClick={goToNextSlide} className="btn btn-circle text-2xl px-4 py-1 border border-gray-600 dark:border-gray-100 rounded-full dark:text-textDark">
-          ❯
-        </button>
-      </div> */}
+      
     </div>
   );
 };

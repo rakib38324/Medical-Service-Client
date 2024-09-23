@@ -1,3 +1,4 @@
+import AskDoctors from "../Components/askDoctors";
 import Banner from "../Components/banner";
 import ClientFacilities from "../Components/clientFacilities";
 import CompanySummary from "../Components/companySummary";
@@ -10,6 +11,7 @@ export default function Menu1() {
       <CompanySummary />
       <ClientFacilities />
       <OurSpeciality />
+      <AskDoctors />
     </div>
   );
 }
