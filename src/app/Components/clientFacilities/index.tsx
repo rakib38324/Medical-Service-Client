@@ -6,20 +6,20 @@ import CleinetFacilitiesCarusole from "./clientfacilitiesCarousel";
 
 export default function ClientFacilities() {
   return (
-    <div className="max-w-[1440px] mx-auto my-20 relative">
-      <div className="pl-24 pt-32">
+    <div className="max-w-[1440px] mx-auto my-20  md:h-[700px] relative">
+      <div className="p-1 md:pl-10 lg:pl-24 pt-32">
         <p className="text-3xl md:text-5xl font-bold dark:text-textDark">
           Clinic Facilies
         </p>
 
-        <div className="flex justify-between">
-          <p className="text-xl font-normal  dark:text-gray-300 mt-5 md:mt-10">
+        <div className="md:flex justify-between">
+          <p className="md:w-2/3  text-xl font-normal  dark:text-gray-300 mt-5 md:mt-10">
             Nam sollicitud nunc, cursus eros vulputate sed. Vestibulum lobortis.
           </p>
 
           <Link
             href={"/"}
-            className="dark:text-textDark text-end font-bold my-auto flex gap-5 mr-5"
+            className="dark:text-textDark text-end font-bold my-auto flex gap-5 mr-5 mt-5 md:mt-0"
           >
             SEE ALL
             <FaArrowRight className="my-auto" />
@@ -35,7 +35,7 @@ export default function ClientFacilities() {
       {/* background circles */}
       <div>
         <svg
-          className="absolute top-0 left-0 -z-30"
+          className="w-2/3 md:w-full absolute top-0 -left-20 md:left-0 -z-30"
           width="400"
           height="400"
           xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ export default function ClientFacilities() {
         </svg>
 
         <svg
-          className="absolute top-5 -left-8 -z-20"
+          className="w-2/3 md:w-full absolute -top-36 md:top-20 lg:top-5 md:-left-36 lg:-left-80 -z-20"
           width="700"
           height="700"
           viewBox="0 0 671 645"

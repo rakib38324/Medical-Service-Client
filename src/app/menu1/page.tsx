@@ -1,6 +1,7 @@
 import Banner from "../Components/banner";
 import ClientFacilities from "../Components/clientFacilities";
 import CompanySummary from "../Components/companySummary";
+import OurSpeciality from "../Components/ourSpeciality";
 
 export default function Menu1() {
   return (
@@ -8,6 +9,7 @@ export default function Menu1() {
       <Banner />
       <CompanySummary />
       <ClientFacilities />
+      <OurSpeciality />
     </div>
   );
 }

@@ -10,7 +10,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 export default function CleinetFacilitiesCarusole() {
   const slider1 = () => {
     return (
-      <div className="mt-5 grid grid-cols-3 gap-5">
+      <div className="mt-5 grid md:grid-cols-3 gap-5">
         <div className=" bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
@@ -36,7 +36,7 @@ export default function CleinetFacilitiesCarusole() {
           </div>
         </div>
 
-        <div className=" bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -61,7 +61,7 @@ export default function CleinetFacilitiesCarusole() {
           </div>
         </div>
 
-        <div className=" bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -91,7 +91,7 @@ export default function CleinetFacilitiesCarusole() {
 
   const slider2 = () => {
     return (
-      <div className="mt-5 grid grid-cols-3 gap-5">
+      <div className="mt-5 grid md:grid-cols-3 gap-5">
         <div className=" bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
@@ -117,7 +117,7 @@ export default function CleinetFacilitiesCarusole() {
           </div>
         </div>
 
-        <div className=" bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className=" hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -142,7 +142,7 @@ export default function CleinetFacilitiesCarusole() {
           </div>
         </div>
 
-        <div className=" bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className=" hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -172,7 +172,7 @@ export default function CleinetFacilitiesCarusole() {
 
   const slider3 = () => {
     return (
-      <div className="mt-5 grid grid-cols-3 gap-5">
+      <div className="mt-5 grid md:grid-cols-3 gap-5">
         <div className="bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
@@ -198,7 +198,7 @@ export default function CleinetFacilitiesCarusole() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -223,7 +223,7 @@ export default function CleinetFacilitiesCarusole() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -281,9 +281,9 @@ export default function CleinetFacilitiesCarusole() {
   };
 
   return (
-    <div className=" grid grid-cols-3 gap-5 mt-10">
-      <div className="w-full col-span-1">
-        <Image className="w-full" src={card} alt="card-image" />
+    <div className=" grid lg:grid-cols-3 gap-5 mt-10">
+      <div className="w-full lg:col-span-1">
+        <Image className="hidden lg:block w-full" src={card} alt="card-image" />
         {/* Navigation Buttons */}
         <div className="flex gap-4 justify-center">
           <button
@@ -301,8 +301,8 @@ export default function CleinetFacilitiesCarusole() {
         </div>
       </div>
 
-      <div className="col-span-2">
-        <div className="carousel w-full min-h-screen md:min-h-[600px] relative">
+      <div className="lg:col-span-2">
+        <div className="carousel w-full  relative">
           {slides.map((slide, index) => (
             <div
               key={index}
