@@ -9,7 +9,7 @@ const BannerCarousel = () => {
   const slider1 = () => {
     return (
       <div className="">
-        <div className="max-w-screen-xl mx-auto   pt-60 md:pt-5 lg:pt-20  p-2 relative z-50">
+        <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20  p-2 relative -z-10">
           <p className="text-3xl md:text-5xl font-bold dark:text-textDark">
             Lorem ipsum dolor amet
           </p>
@@ -143,7 +143,7 @@ const BannerCarousel = () => {
   const slider2 = () => {
     return (
       <div>
-        <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20 p-2">
+        <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20 p-2 relative z-10">
           <div>
             <div className="md:pl-[55%] relative z-10">
               <p className=" text-3xl md:text-5xl font-bold dark:text-textDark">
@@ -274,9 +274,9 @@ const BannerCarousel = () => {
   };
   const slider3 = () => {
     return (
-      <div>
-        <div className="max-w-screen-xl mx-auto  md:pt-5 lg:pt-20 p-2">
-          <div>
+      <div className="">
+        <div className="max-w-screen-xl mx-auto  md:pt-5 lg:pt-20 p-2 relative z-10 ">
+          <div className="">
             <div className="text-center">
               <p className="text-3xl md:text-5xl font-bold dark:text-textDark">
                 Lorem ipsum dolor amet
@@ -355,7 +355,7 @@ const BannerCarousel = () => {
       setCurrentSlide((prevSlide) =>
         prevSlide === totalSlides - 1 ? 0 : prevSlide + 1
       );
-    }, 3000); // 3000ms = 3 seconds
+    }, 5000); // 3000ms = 3 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [totalSlides]);

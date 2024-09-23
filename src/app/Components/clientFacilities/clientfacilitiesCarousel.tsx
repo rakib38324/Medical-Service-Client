@@ -11,7 +11,7 @@ export default function CleinetFacilitiesCarusole() {
   const slider1 = () => {
     return (
       <div className="mt-5 grid md:grid-cols-3 gap-5">
-        <div className=" bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="relative bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -23,20 +23,20 @@ export default function CleinetFacilitiesCarusole() {
             <p className="mb-3 text-xl font-bold dark:text-textDark">
               Lorem ipsum, dolor
             </p>
-            <p className="text-sm text-textSecondary dark:text-textDark">
+            <p className="text-sm text-textSecondary dark:text-textDark mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. etur
               adipisicing elit.
             </p>
           </div>
 
-          <div className="flex justify-end align-bottom items-end mt-6">
+          <div className="absolute bottom-0 right-0">
             <button className="text-sm text-textDark rounded-br-xl rounded-tl-2xl px-4 py-2 bg-secondary">
               SEE DETAILS
             </button>
           </div>
         </div>
 
-        <div className="hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="relative hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -48,20 +48,20 @@ export default function CleinetFacilitiesCarusole() {
             <p className="mb-3 text-xl font-bold dark:text-textDark">
               Lorem ipsum, dolor
             </p>
-            <p className="text-sm text-textSecondary dark:text-textDark">
+            <p className="text-sm text-textSecondary dark:text-textDark mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. etur
               adipisicing elit.
             </p>
           </div>
 
-          <div className="flex justify-end align-bottom items-end mt-6">
+          <div className="absolute bottom-0 right-0">
             <button className="text-sm text-textDark rounded-br-xl rounded-tl-2xl px-4 py-2 bg-secondary">
               SEE DETAILS
             </button>
           </div>
         </div>
 
-        <div className="hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="relative hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -73,13 +73,13 @@ export default function CleinetFacilitiesCarusole() {
             <p className="mb-3 text-xl font-bold dark:text-textDark">
               Lorem ipsum, dolor
             </p>
-            <p className="text-sm text-textSecondary dark:text-textDark">
+            <p className="text-sm text-textSecondary dark:text-textDark mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. etur
               adipisicing elit.
             </p>
           </div>
 
-          <div className="flex justify-end align-bottom items-end mt-6">
+          <div className="absolute bottom-0 right-0">
             <button className="text-sm text-textDark rounded-br-xl rounded-tl-2xl px-4 py-2 bg-secondary">
               SEE DETAILS
             </button>
@@ -92,7 +92,7 @@ export default function CleinetFacilitiesCarusole() {
   const slider2 = () => {
     return (
       <div className="mt-5 grid md:grid-cols-3 gap-5">
-        <div className=" bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className=" relative bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -104,20 +104,20 @@ export default function CleinetFacilitiesCarusole() {
             <p className="mb-3 text-xl font-bold dark:text-textDark">
               Lorem ipsum, dolor
             </p>
-            <p className="text-sm text-textSecondary dark:text-textDark">
+            <p className="text-sm text-textSecondary dark:text-textDark mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. etur
               adipisicing elit.
             </p>
           </div>
 
-          <div className="flex justify-end align-bottom items-end mt-6">
+          <div className="absolute bottom-0 right-0">
             <button className="text-sm text-textDark rounded-br-xl rounded-tl-2xl px-4 py-2 bg-secondary">
               SEE DETAILS
             </button>
           </div>
         </div>
 
-        <div className=" hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="relative hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -129,20 +129,20 @@ export default function CleinetFacilitiesCarusole() {
             <p className="mb-3 text-xl font-bold dark:text-textDark">
               Lorem ipsum, dolor
             </p>
-            <p className="text-sm text-textSecondary dark:text-textDark">
+            <p className="text-sm text-textSecondary dark:text-textDark mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. etur
               adipisicing elit.
             </p>
           </div>
 
-          <div className="flex justify-end align-bottom items-end mt-6">
+          <div className="absolute bottom-0 right-0">
             <button className="text-sm text-textDark rounded-br-xl rounded-tl-2xl px-4 py-2 bg-secondary">
               SEE DETAILS
             </button>
           </div>
         </div>
 
-        <div className=" hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="relative hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -154,13 +154,13 @@ export default function CleinetFacilitiesCarusole() {
             <p className="mb-3 text-xl font-bold dark:text-textDark">
               Lorem ipsum, dolor
             </p>
-            <p className="text-sm text-textSecondary dark:text-textDark">
+            <p className="text-sm text-textSecondary dark:text-textDark mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. etur
               adipisicing elit.
             </p>
           </div>
 
-          <div className="flex justify-end align-bottom items-end mt-6">
+          <div className="absolute bottom-0 right-0">
             <button className="text-sm text-textDark rounded-br-xl rounded-tl-2xl px-4 py-2 bg-secondary">
               SEE DETAILS
             </button>
@@ -173,7 +173,7 @@ export default function CleinetFacilitiesCarusole() {
   const slider3 = () => {
     return (
       <div className="mt-5 grid md:grid-cols-3 gap-5">
-        <div className="bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="relative bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -185,20 +185,20 @@ export default function CleinetFacilitiesCarusole() {
             <p className="mb-3 text-xl font-bold dark:text-textDark">
               Lorem ipsum, dolor
             </p>
-            <p className="text-sm text-textSecondary dark:text-textDark">
+            <p className="text-sm text-textSecondary dark:text-textDark mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. etur
               adipisicing elit.
             </p>
           </div>
 
-          <div className="flex justify-end align-bottom items-end mt-6">
+          <div className="absolute bottom-0 right-0">
             <button className="text-sm text-textDark rounded-br-xl rounded-tl-2xl px-4 py-2 bg-secondary">
               SEE DETAILS
             </button>
           </div>
         </div>
 
-        <div className="hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="relative hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -210,20 +210,20 @@ export default function CleinetFacilitiesCarusole() {
             <p className="mb-3 text-xl font-bold dark:text-textDark">
               Lorem ipsum, dolor
             </p>
-            <p className="text-sm text-textSecondary dark:text-textDark">
+            <p className="text-sm text-textSecondary dark:text-textDark mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. etur
               adipisicing elit.
             </p>
           </div>
 
-          <div className="flex justify-end align-bottom items-end mt-6">
+          <div className="absolute bottom-0 right-0">
             <button className="text-sm text-textDark rounded-br-xl rounded-tl-2xl px-4 py-2 bg-secondary">
               SEE DETAILS
             </button>
           </div>
         </div>
 
-        <div className="hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
+        <div className="relative hidden md:block bg-white dark:bg-paperDark rounded-xl shadow-xl">
           <div className="h-[45%]">
             <Image
               className="w-full h-full rounded-xl rounded-br-[50px]"
@@ -235,13 +235,13 @@ export default function CleinetFacilitiesCarusole() {
             <p className="mb-3 text-xl font-bold dark:text-textDark">
               Lorem ipsum, dolor
             </p>
-            <p className="text-sm text-textSecondary dark:text-textDark">
+            <p className="text-sm text-textSecondary dark:text-textDark mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. etur
               adipisicing elit.
             </p>
           </div>
 
-          <div className="flex justify-end align-bottom items-end mt-6">
+          <div className="absolute bottom-0 right-0">
             <button className="text-sm text-textDark rounded-br-xl rounded-tl-2xl px-4 py-2 bg-secondary">
               SEE DETAILS
             </button>
