@@ -145,7 +145,7 @@ const BannerCarousel = () => {
       <div>
         <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20 p-2">
           <div>
-            <div className="md:pl-[50%] relative z-10">
+            <div className="md:pl-[55%] relative z-10">
               <p className=" text-3xl md:text-5xl font-bold dark:text-textDark">
                 Lorem ipsum dolor amet
               </p>
@@ -229,8 +229,8 @@ const BannerCarousel = () => {
                 y2="1026.68"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#C8E6C9" />
-                <stop offset="1" stop-color="#B3E5FC" />
+                <stop stopColor="#C8E6C9" />
+                <stop offset="1" stopColor="#B3E5FC" />
               </linearGradient>
             </defs>
           </svg>
@@ -255,8 +255,8 @@ const BannerCarousel = () => {
                 y2="1030.07"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#4CAF50" />
-                <stop offset="1" stop-color="#03ACF2" />
+                <stop stopColor="#4CAF50" />
+                <stop offset="1" stopColor="#03ACF2" />
               </linearGradient>
             </defs>
           </svg>
