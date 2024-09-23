@@ -8,8 +8,8 @@ import banner3 from "@/assetes/bg-3.png";
 const BannerCarousel = () => {
   const slider1 = () => {
     return (
-      <div>
-        <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20  p-2">
+      <div className="">
+        <div className="max-w-screen-xl mx-auto   pt-60 md:pt-5 lg:pt-20  p-2 relative z-50">
           <p className="text-3xl md:text-5xl font-bold dark:text-textDark">
             Lorem ipsum dolor amet
           </p>
@@ -17,11 +17,12 @@ const BannerCarousel = () => {
             Nam sollicitud nunc, cursus eros vulputate sed. Vestibulum lobortis.
           </p>
 
-          <div className="mt-16 flex gap-5">
-            <p className="text-secondary my-auto font-bold dark:text-secondaryLight dark:font-normal">
+          <div className="mt-16 flex gap-5 ">
+            <p className="cursor-pointer text-secondary my-auto font-bold dark:text-secondaryLight dark:font-normal">
               MORE INFOR
             </p>
             <PrimaryButton
+              link="/register"
               text="REGISTER NOW"
               textColor="text-white"
               darkTextColor="text-textDark"
@@ -29,9 +30,11 @@ const BannerCarousel = () => {
             />
           </div>
 
-          <div className="mt-10 md:mt-20 lg:mt-36 lg:w-11/12 mx-auto md:flex gap-10 justify-around">
-            <div className="">
-              <p className="md:text-xl text-3xl dark:text-primaryLight">Business Solution</p>
+          <div className=" mt-10 md:mt-20 lg:mt-36 lg:w-11/12 mx-auto md:flex gap-10 justify-around">
+            <div className="my-5 md:my-0">
+              <p className="md:text-xl text-3xl text-primary dark:text-primaryLight">
+                Business Solution
+              </p>
               <p className="text-lg dark:text-textDark">
                 Interdum et malesuada fames ac ante…
               </p>
@@ -40,8 +43,12 @@ const BannerCarousel = () => {
               ></span>
             </div>
 
-            <div className="">
-              <p className="md:text-xl text-3xl dark:text-textDark">Free project quote</p>
+            <span className="my-2 border-2"></span>
+
+            <div className="my-5 md:my-0">
+              <p className="md:text-xl text-3xl dark:text-textDark">
+                Free project quote
+              </p>
               <p className="text-lg dark:text-textDark">
                 Interdum et malesuada fames ac ante…
               </p>
@@ -49,8 +56,10 @@ const BannerCarousel = () => {
 
             <span className="my-2 border-2"></span>
 
-            <div className="">
-              <p className="md:text-xl text-3xl dark:text-textDark">Nulla lobortis nunc</p>
+            <div className="my-5 md:my-0">
+              <p className="md:text-xl text-3xl dark:text-textDark">
+                Nulla lobortis nunc
+              </p>
               <p className="text-lg dark:text-textDark">
                 Interdum et malesuada fames ac ante…
               </p>
@@ -59,7 +68,7 @@ const BannerCarousel = () => {
         </div>
 
         {/* Background images */}
-        <div className="-z-10">
+        <div className="">
           <svg
             className="w-1/2 md:w-2/3 absolute -top-24 right-0 -z-50"
             width="700"
@@ -136,19 +145,20 @@ const BannerCarousel = () => {
       <div>
         <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20 p-2">
           <div>
-            <div className="md:pl-[50%]">
-              <p className="text-3xl md:text-5xl font-bold dark:text-textDark">
+            <div className="md:pl-[50%] relative z-10">
+              <p className=" text-3xl md:text-5xl font-bold dark:text-textDark">
                 Lorem ipsum dolor amet
               </p>
-              <p className="text-xl font-normal text-textSecondary dark:text-gray-300 lg:w-1/2 mt-5 md:mt-10">
+              <p className=" text-xl font-normal text-textSecondary dark:text-gray-300 lg:w-1/2 mt-5 md:mt-10">
                 Nam sollicitud nunc, cursus eros vulputate sed. Vestibulum
                 lobortis.
               </p>
-              <div className="mt-10 flex gap-5">
-                <p className="text-secondary my-auto font-bold dark:text-secondaryLight dark:font-normal">
+              <div className="mt-10 flex gap-5 z-10">
+                <p className="cursor-pointer text-secondary my-auto font-bold dark:text-secondaryLight dark:font-normal">
                   MORE INFOR
                 </p>
                 <PrimaryButton
+                  link="/register"
                   text="REGISTER NOW"
                   textColor="text-white"
                   darkTextColor="text-textDark"
@@ -158,8 +168,10 @@ const BannerCarousel = () => {
             </div>
 
             <div className="mt-10 md:mt-20 lg:mt-36 lg:w-11/12 mx-auto md:flex gap-10 justify-around">
-              <div className="">
-                <p className="md:text-xl text-3xl dark:text-textDark">Business Solution</p>
+              <div className="my-5 md:my-0">
+                <p className="md:text-xl text-3xl dark:text-textDark">
+                  Business Solution
+                </p>
                 <p className="text-lg dark:text-textDark">
                   Interdum et malesuada fames ac ante…
                 </p>
@@ -167,7 +179,7 @@ const BannerCarousel = () => {
 
               <span className="my-2 border-2"></span>
 
-              <div className="">
+              <div className="my-5 md:my-0">
                 <p className="md:text-xl text-3xl dark:text-primaryLight text-primary">
                   Free project quote
                 </p>
@@ -181,7 +193,7 @@ const BannerCarousel = () => {
 
               <span className="my-2 border-2"></span>
 
-              <div className="">
+              <div className="my-5 md:my-0">
                 <p className="md:text-xl text-3xl dark:text-textDark ">
                   Nulla lobortis nunc
                 </p>
@@ -223,7 +235,7 @@ const BannerCarousel = () => {
             </defs>
           </svg>
           <svg
-            className="w-2/3 lg:w-1/2 absolute -top-96 md:-top-80 lg:-top-24 left-0 -z-10"
+            className="w-2/3 md:w-full lg:w-1/2 absolute -top-96 md:-top-80 lg:-top-34 left-0 -z-10"
             width="721"
             height="612"
             viewBox="0 0 721 612"
@@ -273,11 +285,12 @@ const BannerCarousel = () => {
                 Nam sollicitud nunc, cursus eros vulputate sed. Vestibulum
                 lobortis.
               </p>
-              <div className=" flex justify-center gap-5">
-                <p className="text-secondary my-auto font-bold dark:text-secondaryLight dark:font-normal">
+              <div className=" flex justify-center gap-5 my-5">
+                <p className="cursor-pointer text-secondary my-auto font-bold dark:text-secondaryLight dark:font-normal">
                   MORE INFOR
                 </p>
                 <PrimaryButton
+                  link="/register"
                   text="REGISTER NOW"
                   textColor="text-white"
                   darkTextColor="text-textDark"
@@ -286,12 +299,12 @@ const BannerCarousel = () => {
               </div>
             </div>
 
-            <div className="flex justify-center">
-              <Image src={banner3} alt="background" />
+            <div className="flex justify-center my-10">
+              <Image className="w-full md:w-fit" src={banner3} alt="background" />
             </div>
 
-            <div className="mt-3 lg:w-11/12 mx-auto md:flex gap-10 justify-around">
-              <div className="">
+            <div className="mt-3 lg:w-11/12 mx-auto  md:flex gap-10 justify-around">
+              <div className="my-5 md:my-0">
                 <p className="md:text-xl text-3xl dark:text-textDark">
                   Business Solution
                 </p>
@@ -302,7 +315,7 @@ const BannerCarousel = () => {
 
               <span className="my-2 border-2"></span>
 
-              <div className="">
+              <div className="my-5 md:my-0">
                 <p className="md:text-xl text-3xl dark:text-textDark">
                   Free project quote
                 </p>
@@ -313,7 +326,7 @@ const BannerCarousel = () => {
 
               <span className="my-2 border-2"></span>
 
-              <div className="">
+              <div className="my-5 md:my-0">
                 <p className="md:text-xl text-3xl dark:text-primaryLight text-primary">
                   Nulla lobortis nunc
                 </p>
@@ -347,16 +360,8 @@ const BannerCarousel = () => {
     return () => clearInterval(interval); // Cleanup on unmount
   }, [totalSlides]);
 
-  const goToNextSlide = () => {
-    setCurrentSlide((currentSlide + 1) % totalSlides);
-  };
-
-  const goToPrevSlide = () => {
-    setCurrentSlide(currentSlide === 0 ? totalSlides - 1 : currentSlide - 1);
-  };
-
   return (
-    <div className="carousel w-full relative -z-20">
+    <div className="carousel w-full min-h-screen md:min-h-[600px] relative">
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -368,14 +373,14 @@ const BannerCarousel = () => {
         </div>
       ))}
       {/* Navigation Buttons */}
-      <div className="absolute left-5 right-5  top-56 md:top-64 flex -translate-y-1/2 transform justify-between items-center">
+      {/* <div className="absolute left-5 right-5  top-56 md:top-60 flex -translate-y-1/2 transform justify-between items-center bg-red-600 z-0">
         <button onClick={goToPrevSlide} className="btn btn-circle text-2xl px-4 py-1 border border-gray-600 dark:border-gray-100 rounded-full dark:text-textDark">
           ❮
         </button>
         <button onClick={goToNextSlide} className="btn btn-circle text-2xl px-4 py-1 border border-gray-600 dark:border-gray-100 rounded-full dark:text-textDark">
           ❯
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
