@@ -68,7 +68,7 @@ const Navbar = () => {
               LOGIN
             </Link>
             
-            <PrimaryButton link="/" text="REGISTER" textColor="text-white" darkTextColor="text-text-Dark" bgColor="bg-secondary" />
+            <PrimaryButton link="/register" text="REGISTER" textColor="text-white" darkTextColor="text-text-Dark" bgColor="bg-secondary" />
             <span className="border-[1px] border-gray-300 my-2"></span>
             <IoMdSettings
               onClick={() => setSettingPopUp(!settingPopUp)}
