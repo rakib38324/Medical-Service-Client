@@ -1,6 +1,6 @@
-import TestimonialCarusole from "./testimonialsCarousel";
+import TestimonialCarusole, { TTestimonial } from "./testimonialsCarousel";
 
-export default function Testimonials() {
+export default function Testimonials({testimonials}:{testimonials: TTestimonial[]}) {
   return (
     <div className="max-w-[1440px] h-[1100px] md:h-[900px] lg:h-[600px] mx-auto relative">
       <div className="max-w-screen-xl mx-auto p-1">
@@ -14,7 +14,7 @@ export default function Testimonials() {
       </div>
 
       <div>
-        <TestimonialCarusole />
+        <TestimonialCarusole testimonials={testimonials} />
       </div>
       {/* background circles */}
       <div>

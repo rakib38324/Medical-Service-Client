@@ -1,394 +1,60 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import d1 from "@/assetes/d-1.png";
-import d2 from "@/assetes/d-2.png";
+import d1 from "@/assetes/d-1.png"; // If you plan to use these images, ensure they are imported or handled correctly
+import d2 from "@/assetes/d-2.png"; // These imports seem unused in the component currently
 import d3 from "@/assetes/d-3.png";
 import card from "@/assetes/bg-7.png";
 import { FaArrowLeft, FaArrowRight, FaStar } from "react-icons/fa";
 
-export default function TestimonialCarusole() {
-  const slider1 = () => {
-    return (
-      <div className="mt-20 lg:mt-5 grid md:grid-cols-2  lg:grid-cols-3 lg:gap-20">
-       
-        <div className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark relative">
-          <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
-            <p className="text-base dark:text-textDark">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis laborum cumque unde quis aliquid perspiciatis
-            </p>
+export type TTestimonial = {
+  _id: string; // Add the ID field for each testimonial
+  name: string;
+  designation: string;
+  comment: string;
+  start: number;
+  img: string;
+};
 
-            <div className="mt-10 flex gap-3">
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-            </div>
-          </div>
+interface TestimonialCarouselProps {
+  testimonials: TTestimonial[]; // Define the prop type for testimonials
+}
 
-          <div className="absolute bottom-2 right-2 flex gap-4">
-            <div className="my-auto">
-              <p className="text-xl font-bold dark:text-textDark">John Deo</p>
-              <p className="text-sm text-textSecondary dark:text-textDark italic">
-                Chif Digital Officer
-              </p>
-            </div>
-
-            <div className="size-20">
-              <Image
-                className="bg-secondary  rounded-full rounded-br-none"
-                src={d1}
-                alt="hospital"
-              />
-            </div>
-          </div>
-
-        </div>
-
-        <div className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark relative ">
-          <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
-            <p className="text-base dark:text-textDark">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis laborum cumque unde quis aliquid perspiciatis
-            </p>
-
-            <div className="mt-10 flex gap-3">
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-            </div>
-          </div>
-
-          <div className="absolute bottom-2 right-2 flex gap-4">
-            <div className="my-auto">
-              <p className="text-xl font-bold dark:text-textDark">John Deo</p>
-              <p className="text-sm text-textSecondary dark:text-textDark italic">
-                Chif Digital Officer
-              </p>
-            </div>
-
-            <div className="size-20">
-              <Image
-                className="bg-secondary  rounded-full rounded-br-none"
-                src={d1}
-                alt="hospital"
-              />
-            </div>
-          </div>
-
-         
-        </div>
-
-
-        <div className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark relative ">
-          <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
-            <p className="text-base dark:text-textDark">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis laborum cumque unde quis aliquid perspiciatis
-            </p>
-
-            <div className="mt-10 flex gap-3">
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-            </div>
-          </div>
-
-          <div className="absolute bottom-2 right-2 flex gap-4">
-            <div className="my-auto">
-              <p className="text-xl font-bold dark:text-textDark">John Deo</p>
-              <p className="text-sm text-textSecondary dark:text-textDark italic">
-                Chif Digital Officer
-              </p>
-            </div>
-
-            <div className="size-20">
-              <Image
-                className="bg-secondary  rounded-full rounded-br-none"
-                src={d1}
-                alt="hospital"
-              />
-            </div>
-          </div>
-
-         
-        </div>
-
-      </div>
-    );
+const TestimonialCarusole: React.FC<TestimonialCarouselProps> = ({ testimonials }) => {
+  // Function to generate slides from testimonials
+  const generateSlides = (data: TTestimonial[]) => {
+    const slides: TTestimonial[][] = []; // Array of arrays to hold the slides
+    for (let i = 0; i < data.length; i += 3) {
+      slides.push(data.slice(i, i + 3)); // Take 3 items for each slide
+    }
+    return slides;
   };
 
-  const slider2 = () => {
-    return (
-      <div className="mt-20 lg:mt-5 grid md:grid-cols-2  lg:grid-cols-3 lg:gap-20">
-       
-        <div className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark  relative ">
-          <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
-            <p className="text-base dark:text-textDark">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis laborum cumque unde quis aliquid perspiciatis
-            </p>
+  const slides = generateSlides(testimonials); // Generate slides
 
-            <div className="mt-10 flex gap-3">
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-            </div>
-          </div>
-
-          <div className="absolute bottom-2 right-2 flex gap-4">
-            <div className="my-auto">
-              <p className="text-xl font-bold dark:text-textDark">John Deo</p>
-              <p className="text-sm text-textSecondary dark:text-textDark italic">
-                Chif Digital Officer
-              </p>
-            </div>
-
-            <div className="size-20">
-              <Image
-                className="bg-secondary  rounded-full rounded-br-none"
-                src={d2}
-                alt="hospital"
-              />
-            </div>
-          </div>
-
-        </div>
-
-        <div className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark relative">
-          <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
-            <p className="text-base dark:text-textDark">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis laborum cumque unde quis aliquid perspiciatis
-            </p>
-
-            <div className="mt-10 flex gap-3">
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-            </div>
-          </div>
-
-          <div className="absolute bottom-2 right-2 flex gap-4">
-            <div className="my-auto">
-              <p className="text-xl font-bold dark:text-textDark">John Deo</p>
-              <p className="text-sm text-textSecondary dark:text-textDark italic">
-                Chif Digital Officer
-              </p>
-            </div>
-
-            <div className="size-20">
-              <Image
-                className="bg-secondary  rounded-full rounded-br-none"
-                src={d2}
-                alt="hospital"
-              />
-            </div>
-          </div>
-
-         
-        </div>
-
-
-        <div className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark relative">
-          <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
-            <p className="text-base dark:text-textDark">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis laborum cumque unde quis aliquid perspiciatis
-            </p>
-
-            <div className="mt-10 flex gap-3">
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-            </div>
-          </div>
-
-          <div className="absolute bottom-2 right-2 flex gap-4">
-            <div className="my-auto">
-              <p className="text-xl font-bold dark:text-textDark">John Deo</p>
-              <p className="text-sm text-textSecondary dark:text-textDark italic">
-                Chif Digital Officer
-              </p>
-            </div>
-
-            <div className="size-20">
-              <Image
-                className="bg-secondary  rounded-full rounded-br-none"
-                src={d2}
-                alt="hospital"
-              />
-            </div>
-          </div>
-
-         
-        </div>
-
-      </div>
-    );
-  };
-
-  const slider3 = () => {
-    return (
-      <div className="mt-20 lg:mt-5 grid md:grid-cols-2 lg:grid-cols-3 lg:gap-20">
-       
-        <div className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark relative">
-          <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
-            <p className="text-base dark:text-textDark">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis laborum cumque unde quis aliquid perspiciatis
-            </p>
-
-            <div className="mt-10 flex gap-3">
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-            </div>
-          </div>
-
-          <div className="absolute bottom-2 right-2 flex gap-4">
-            <div className="my-auto">
-              <p className="text-xl font-bold dark:text-textDark">John Deo</p>
-              <p className="text-sm text-textSecondary dark:text-textDark italic">
-                Chif Digital Officer
-              </p>
-            </div>
-
-            <div className="size-20">
-              <Image
-                className="bg-secondary  rounded-full rounded-br-none"
-                src={d3}
-                alt="hospital"
-              />
-            </div>
-          </div>
-
-        </div>
-
-        <div className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark relative">
-          <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
-            <p className="text-base dark:text-textDark">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis laborum cumque unde quis aliquid perspiciatis
-            </p>
-
-            <div className="mt-10 flex gap-3">
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-            </div>
-          </div>
-
-          <div className="absolute bottom-2 right-2 flex gap-4">
-            <div className="my-auto">
-              <p className="text-xl font-bold dark:text-textDark">John Deo</p>
-              <p className="text-sm text-textSecondary dark:text-textDark italic">
-                Chif Digital Officer
-              </p>
-            </div>
-
-            <div className="size-20">
-              <Image
-                className="bg-secondary  rounded-full rounded-br-none"
-                src={d3}
-                alt="hospital"
-              />
-            </div>
-          </div>
-
-         
-        </div>
-
-
-        <div className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark relative">
-          <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
-            <p className="text-base dark:text-textDark">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Reiciendis laborum cumque unde quis aliquid perspiciatis
-            </p>
-
-            <div className="mt-10 flex gap-3">
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-              <FaStar className="my-auto text-yellow-300" />
-            </div>
-          </div>
-
-          <div className="absolute bottom-2 right-2 flex gap-4">
-            <div className="my-auto">
-              <p className="text-xl font-bold dark:text-textDark">John Deo</p>
-              <p className="text-sm text-textSecondary dark:text-textDark italic">
-                Chif Digital Officer
-              </p>
-            </div>
-
-            <div className="size-20">
-              <Image
-                className="bg-secondary  rounded-full rounded-br-none"
-                src={d3}
-                alt="hospital"
-              />
-            </div>
-          </div>
-
-         
-        </div>
-
-      </div>
-    );
-  };
- 
-  const slides = [slider1(), slider2(), slider3()]; // Invoke the slider function to return JSX
-
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
   const totalSlides = slides.length;
 
-  // Automatically change slide every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) =>
-        prevSlide === totalSlides - 1 ? 0 : prevSlide + 1
-      );
-    }, 3000); // 3000ms = 3 seconds
+      setCurrentSlide((prevSlide) => (prevSlide === totalSlides - 1 ? 0 : prevSlide + 1));
+    }, 3000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, [totalSlides]);
 
-  // Functions to handle next and previous slide actions
   const goToNextSlide = () => {
-    setCurrentSlide((prevSlide) =>
-      prevSlide === totalSlides - 1 ? 0 : prevSlide + 1
-    );
+    setCurrentSlide((prevSlide) => (prevSlide === totalSlides - 1 ? 0 : prevSlide + 1));
   };
 
   const goToPrevSlide = () => {
-    setCurrentSlide((prevSlide) =>
-      prevSlide === 0 ? totalSlides - 1 : prevSlide - 1
-    );
+    setCurrentSlide((prevSlide) => (prevSlide === 0 ? totalSlides - 1 : prevSlide - 1));
   };
 
   return (
-    <div className=" grid lg:grid-cols-3 gap-5 mt-10">
+    <div className="grid lg:grid-cols-3 gap-5 mt-10">
       <div className="lg:col-span-2">
-        <div className="carousel w-full  relative">
+        <div className="carousel w-full relative">
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -396,30 +62,65 @@ export default function TestimonialCarusole() {
                 currentSlide === index ? "opacity-100" : "opacity-0"
               }`}
             >
-              {slide}
+              <div className="mt-20 lg:mt-5 grid md:grid-cols-2 lg:grid-cols-3 lg:gap-20">
+                {slide.map((testimonial) => (
+                  <div key={testimonial._id} className="size-72 mx-auto bg-gradient-to-tr from-white via-slate-100 to-white dark:bg-bg-gradient-to-tr dark:from-defaultDark dark:to-defaultDark relative">
+                    <div className="w-full h-full bg-white dark:bg-paperDark rounded-full rounded-tl-none p-10">
+                      <p className="text-base dark:text-textDark">{testimonial.comment}</p>
+
+                      <div className="mt-10 flex gap-3">
+                        {[...Array(testimonial.start)].map((_, i) => (
+                          <FaStar key={i} className="my-auto text-yellow-300" />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-2 right-2 flex gap-4">
+                      <div className="my-auto">
+                        <p className="text-xl font-bold dark:text-textDark">{testimonial.name}</p>
+                        <p className="text-sm text-textSecondary dark:text-textDark italic">{testimonial.designation}</p>
+                      </div>
+
+                      <div className="size-20">
+                        <Image
+                          className="bg-secondary rounded-full rounded-br-none"
+                          src={testimonial.img}
+                          alt={testimonial.name}
+                          width={50} // Specify width for image
+                          height={50} // Specify height for image
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
       </div>
 
       <div className="w-full lg:col-span-1">
-        <Image className="hidden lg:block w-full" src={card} alt="card-image" />
+        <div>
+          <Image src={card} alt="banner" />
+        </div>
         {/* Navigation Buttons */}
         <div className="flex gap-4 justify-center">
           <button
             onClick={goToPrevSlide}
-            className="border  text-xl p-2 bg-white dark:bg-paperDark text-primaryDark dark:border-gray-100 rounded-full dark:text-textDark"
+            className="border text-xl p-2 bg-white dark:bg-paperDark text-primaryDark dark:border-gray-100 rounded-full dark:text-textDark"
           >
             <FaArrowLeft />
           </button>
           <button
             onClick={goToNextSlide}
-            className="border  text-xl p-2 bg-white dark:bg-paperDark text-primaryDark dark:border-gray-100 rounded-full dark:text-textDark"
+            className="border text-xl p-2 bg-white dark:bg-paperDark text-primaryDark dark:border-gray-100 rounded-full dark:text-textDark"
           >
-            <FaArrowRight  />
+            <FaArrowRight />
           </button>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default TestimonialCarusole;

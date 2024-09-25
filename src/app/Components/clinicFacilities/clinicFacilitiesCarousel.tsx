@@ -302,7 +302,7 @@ export default function CleinetFacilitiesCarusole() {
       </div>
 
       <div className="lg:col-span-2">
-        <div className="carousel w-full  relative">
+        <div className="carousel  relative">
           {slides.map((slide, index) => (
             <div
               key={index}

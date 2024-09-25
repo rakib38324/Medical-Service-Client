@@ -5,130 +5,54 @@ import { BsHandbagFill } from "react-icons/bs";
 import { SlLike } from "react-icons/sl";
 import PrimaryButton from "../common/PrimaryButton";
 import Image from "next/image";
-import d1 from "@/assetes/d-1.png";
-import d2 from "@/assetes/d-1.png";
-import d3 from "@/assetes/d-1.png";
 import bg6 from "@/assetes/bg-6.png";
 
-export default function AskDoctors() {
-  const [navigator, setNavigator] = useState(1);
+export type TDoctor = {
+  name: string;
+  specialist: string;
+  like: string;
+  experience: number;
+  img: string;
+};
 
+export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
+  const [navigator, setNavigator] = useState(1);
+  const [special, setSpecial] = useState("");
+
+  // Function to get doctors by specialist name
+  function getDoctorsBySpecialist(specialist: string): TDoctor[] {
+    return Doctors.filter(
+      (doctor) => doctor.specialist.toLowerCase() === specialist.toLowerCase()
+    );
+  }
+
+  const doctors = special === "All"  ? Doctors: special ? getDoctorsBySpecialist(special) : Doctors;
+
+  console.log(Doctors);
   const specialists = [
     {
       id: 1,
       label: "All",
-      doctors: [
-        {
-          id: 1,
-          name: "Aminul Islam Rakib",
-          specialist: "Orthopedic",
-          like: "92%",
-          experience: 4,
-          img: d1,
-        },
-        {
-          id: 2,
-          name: "Sarah Johnson",
-          specialist: "Nutritionist",
-          like: "88%",
-          experience: 7,
-          img: d2,
-        },
-        {
-          id: 3,
-          name: "David Miller",
-          specialist: "Pediatric",
-          like: "94%",
-          experience: 5,
-          img: d3,
-        },
-        {
-          id: 4,
-          name: "Emily Brown",
-          specialist: "Anaesthetic",
-          like: "89%",
-          experience: 6,
-          img: d1,
-        },
-        {
-          id: 5,
-          name: "John Doe",
-          specialist: "Orthopedic",
-          like: "85%",
-          experience: 8,
-          img: d2,
-        },
-      ],
     },
     {
       id: 2,
       label: "Orthopedic",
-      doctors: [
-        {
-          id: 1,
-          name: "Aminul Islam Rakib",
-          specialist: "Orthopedic",
-          like: "92%",
-          experience: 4,
-          img: d1,
-        },
-        {
-          id: 5,
-          name: "John Doe",
-          specialist: "Orthopedic",
-          like: "85%",
-          experience: 8,
-          img: d3,
-        },
-      ],
     },
     {
       id: 3,
       label: "Nutritionist",
-      doctors: [
-        {
-          id: 2,
-          name: "Sarah Johnson",
-          specialist: "Nutritionist",
-          like: "88%",
-          experience: 7,
-          img: d2,
-        },
-      ],
     },
     {
       id: 4,
       label: "Pediatric",
-      doctors: [
-        {
-          id: 3,
-          name: "David Miller",
-          specialist: "Pediatric",
-          like: "94%",
-          experience: 5,
-          img: d3,
-        },
-      ],
     },
     {
       id: 5,
       label: "Anaesthetic",
-      doctors: [
-        {
-          id: 4,
-          name: "Emily Brown",
-          specialist: "Anaesthetic",
-          like: "89%",
-          experience: 6,
-          img: d1,
-        },
-      ],
     },
   ];
 
-  // Find the selected specialist
-  const selectedSpecialist = specialists.find((spec) => spec.id === navigator);
-
+ 
   return (
     <div className="max-w-screen-xl mx-auto my-10 md:my-20 grid md:grid-cols-5 p-1 relative">
       <div className="md:col-span-1">
@@ -141,7 +65,10 @@ export default function AskDoctors() {
             {specialists?.map((spec) => (
               <p
                 key={spec.id}
-                onClick={() => setNavigator(spec.id)}
+                onClick={() => {
+                  setNavigator(spec.id);
+                  setSpecial(spec.label);
+                }}
                 className={`w-2/3 md:w-full lg:w-2/3 my-10 text-xl dark:text-textDark border hover:bg-primary rounded-xl pl-4 hover:cursor-pointer ${
                   navigator === spec.id && "bg-primary"
                 }`}
@@ -155,9 +82,9 @@ export default function AskDoctors() {
       </div>
 
       <div className="md:col-span-4 grid lg:grid-cols-2 gap-10 pl-10  pt-10 md:pt-0">
-        {selectedSpecialist?.doctors?.map((doctor) => (
+        {doctors?.map((doctor, i) => (
           <div
-            key={doctor.id}
+            key={i}
             className="relative h-44 bg-defaultWhite dark:bg-paperDark rounded-lg p-4 mx-5"
           >
             <div className="absolute -top-8 -left-8 size-20">

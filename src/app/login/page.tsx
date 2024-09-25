@@ -1,11 +1,70 @@
+"use client"
 import Image from "next/image";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { LiaGoogle } from "react-icons/lia";
 import ban from "@/assetes/bg-10.png";
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { saveToLocalStorage } from "../Components/common/utilis";
 
 export default function Register() {
-  const handleRegister = () => {};
 
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const router = useRouter();
+  
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const toastId = toast.loading("Processing...");
+
+
+    const formData = {
+      email,
+      password,
+    };
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = response.data; // You don't need to call .json() here
+
+      if (data?.success === true) {
+        toast.success(data.message, { id: toastId });
+        saveToLocalStorage(data?.data?.token, data?.data?.user);
+        router.push('/')
+      } else {
+        toast.error(data?.message, { id: toastId });
+        console.error("Failed to register user:", response.status);
+      }
+    } catch (error) {
+      // Type narrowing for AxiosError
+      if (axios.isAxiosError(error)) {
+        const errorMessage =
+          error.response?.data?.errorMessage ||
+          "Oops! Something went wrong. Try again.";
+        setError(errorMessage);
+        toast.error(errorMessage, { id: toastId });
+        console.error("Error registering user:", errorMessage);
+      } else {
+        // Handle non-Axios errors
+        toast.error("An unexpected error occurred.", { id: toastId });
+        console.error("An unexpected error occurred:", error);
+      }
+    }
+  };
   return (
     <div className="max-w-screen-xl mx-auto lg:flex lg:flex-row-reverse  gap-5 p-1 my-20">
       <div className="w-full">
@@ -50,7 +109,7 @@ export default function Register() {
           <hr className="my-auto md:ml-5 border-[1px]" />
         </div>
 
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="flex flex-col gap-4 pt-6">
             <div className="relative h-11 w-full min-w-[200px] my-5">
               <input
@@ -58,6 +117,8 @@ export default function Register() {
                 className="peer w-full h-full pt-5 text-sm font-normal transition-all bg-transparent border-b-2 border-blue-gray-200  outline-none placeholder-transparent focus:border-primary dark:dark:text-primaryLight"
                 placeholder="Email"
                 id="email"
+                required
+                onChange={(e) => setEmail(e.target.value)}
               />
               <label
                 htmlFor="email"
@@ -73,6 +134,8 @@ export default function Register() {
                 className="peer w-full h-full pt-5 text-sm font-normal transition-all bg-transparent border-b-2 border-blue-gray-200  outline-none placeholder-transparent focus:border-primary dark:dark:text-primaryLight"
                 placeholder="Passowrd"
                 id="password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
               />
               <label
                 htmlFor="password"
@@ -81,6 +144,9 @@ export default function Register() {
                 Password
               </label>
             </div>
+
+            {error && <p className="text-red-500 italic">{error}</p>}
+
 
             <div className="md:flex justify-between mt-8">
               <div className="flex gap-3">
@@ -96,7 +162,7 @@ export default function Register() {
             </div>
             <div className="my-auto mt-10 w-full flex justify-center">
               <input
-                type="button"
+                type="submit"
                 value="CONTINURE"
                 className="w-full text-textDark px-10 py-3 bg-primary rounded-2xl cursor-pointer"
               />

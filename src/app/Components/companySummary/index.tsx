@@ -1,4 +1,12 @@
-export default function CompanySummary() {
+export default function CompanySummary({
+  doctors,
+  clinic,
+  specialist,
+}: {
+  doctors: number;
+  clinic: number;
+  specialist: number;
+}) {
   return (
     <div className="w-11/12 mx-auto grid md:grid-cols-3 gap-10">
       <div className="">
@@ -32,9 +40,11 @@ export default function CompanySummary() {
 
           <div>
             <p className="text-3xl lg:text-5xl text-secondaryDark dark:text-secondaryLight font-bold">
-              +1200
+              +{doctors}
             </p>
-            <p className="text-2xl lg:text-4xl text-black dark:text-textDark">Doctors</p>
+            <p className="text-2xl lg:text-4xl text-black dark:text-textDark">
+              Doctors
+            </p>
           </div>
         </div>
         <p className="lg:text-lg text-center font-normal dark:text-textDark mt-4">
@@ -67,9 +77,11 @@ export default function CompanySummary() {
 
           <div>
             <p className="text-3xl lg:text-5xl text-secondaryDark dark:text-secondaryLight font-bold">
-              +1200
+              +{clinic}
             </p>
-            <p className="text-2xl lg:text-4xl text-black dark:text-textDark">Clinics</p>
+            <p className="text-2xl lg:text-4xl text-black dark:text-textDark">
+              Clinics
+            </p>
           </div>
         </div>
         <p className="lg:text-lg text-center font-normal dark:text-textDark mt-4">
@@ -102,9 +114,11 @@ export default function CompanySummary() {
 
           <div>
             <p className="text-3xl lg:text-5xl text-secondaryDark dark:text-secondaryLight font-bold">
-              +1200
+              +{specialist}
             </p>
-            <p className="text-2xl lg:text-4xl text-black dark:text-textDark">Specialist</p>
+            <p className="text-2xl lg:text-4xl text-black dark:text-textDark">
+              Specialist
+            </p>
           </div>
         </div>
         <p className="lg:text-lg text-center font-normal dark:text-textDark mt-4">

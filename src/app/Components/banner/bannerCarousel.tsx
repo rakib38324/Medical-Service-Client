@@ -149,7 +149,7 @@ const BannerCarousel = () => {
               <p className=" text-3xl md:text-5xl font-bold dark:text-textDark">
                 Lorem ipsum dolor amet
               </p>
-              <p className=" text-xl font-normal text-textSecondary dark:text-gray-300 lg:w-1/2 mt-5 md:mt-10">
+              <p className=" text-xl font-normal text-textSecondary dark:text-gray-300 mt-5 md:mt-10">
                 Nam sollicitud nunc, cursus eros vulputate sed. Vestibulum
                 lobortis.
               </p>
