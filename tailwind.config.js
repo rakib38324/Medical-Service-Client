@@ -26,7 +26,9 @@ module.exports = {
         accentDark: "#ad1457",
         textPrimary: "#212121",
         textSecondary: "#757575",
-        textDark: "#FFFFFF"
+        textDark: "#FFFFFF",
+        defaultDark:"#303030",
+        defaultWhite:"#FAFAFA",
       },
     },
   },
