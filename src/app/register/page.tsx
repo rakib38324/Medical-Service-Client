@@ -13,9 +13,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [conPassword, setConPassword] = useState("");
   const [error, setError] = useState("");
-  const [message, setMessage] = useState(false);
-
-
+  const [message, setMessage] = useState("");
 
   const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,8 +48,12 @@ export default function Register() {
       const data = response.data; // You don't need to call .json() here
 
       if (data?.success === true) {
-        toast.success(data.message, { id: toastId });
-        setMessage(true);
+        resetFiled();
+        toast.success(
+          data.message + "and Email verification link sended in your email.",
+          { id: toastId }
+        );
+        setMessage("Email verification code sended.");
         console.log("User registered successfully:", data);
       } else {
         toast.error(data?.message, { id: toastId });
@@ -74,17 +76,16 @@ export default function Register() {
     }
   };
 
+  const resetFiled = ()=>{
+    setName("");
+    setEmail("");
+    setPassword("");
+    setConPassword("");
+    setEmail("")
+  }
+
   return (
     <div className="max-w-screen-xl mx-auto my-20">
-      {message && (
-        <div className="w-1/2 mx-auto text-center my-20">
-          <p className="text-3xl  font-bold">Account Verification</p>
-          <p className="text-xl my-2">
-            Thank you so much for Register with us. Check you email email. We send a verification link.
-          </p>
-        </div>
-      )}
-
       <div className="lg:flex lg:flex-row-reverse  gap-5 p-1">
         <div className="w-full">
           <p className="text-center text-3xl md:text-4xl font-bold dark:text-textDark lg:mt-16">
@@ -136,6 +137,7 @@ export default function Register() {
                   className="peer w-full h-full pt-5 text-sm font-normal transition-all bg-transparent border-b-2 border-blue-gray-200  outline-none placeholder-transparent focus:border-primary dark:dark:text-primaryLight"
                   placeholder="Name"
                   id="name"
+                  value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
@@ -154,6 +156,7 @@ export default function Register() {
                   placeholder="Email"
                   id="email"
                   required
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <label
@@ -172,6 +175,7 @@ export default function Register() {
                     placeholder="Password"
                     id="password"
                     required
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <label
@@ -189,6 +193,7 @@ export default function Register() {
                     placeholder="Repeat Password"
                     id="repeatPassword"
                     required
+                    value={conPassword}
                     onChange={(e) => setConPassword(e.target.value)}
                   />
                   <label
@@ -199,6 +204,18 @@ export default function Register() {
                   </label>
                 </div>
               </div>
+
+              {message && <p className="text-green-500 italic">{message}</p>}
+
+              {message && (
+                <div className=" mx-auto text-center my-20">
+                  <p className="text-3xl  font-bold">Account Verification</p>
+                  <p className="text-xl my-2">
+                    Thank you so much for Register with us. Check your email. We
+                    send a verification link.
+                  </p>
+                </div>
+              )}
 
               {error && <p className="text-red-500 italic">{error}</p>}
 

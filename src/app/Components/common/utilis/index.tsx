@@ -1,5 +1,9 @@
+
 // Function to save token and user info into localStorage
-export const saveToLocalStorage = (token: string, userInfo: any) => {
+export const saveToLocalStorage = (
+  token: string,
+  userInfo: { name: string; email: string }
+) => {
   try {
     localStorage.setItem("token", token);
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
@@ -13,9 +17,8 @@ export const getTokenFromLocalStorage = () => {
   try {
     const token = localStorage.getItem("token");
 
-
     if (token) {
-      return token
+      return token;
     }
 
     return null; // Return null if either token or userInfo is missing
@@ -42,7 +45,6 @@ export const getUserFromLocalStorage = () => {
     return null;
   }
 };
-
 
 // Function to remove user info and token from localStorage
 export const removeUserAndToken = (): void => {

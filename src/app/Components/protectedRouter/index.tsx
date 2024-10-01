@@ -32,7 +32,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     if (!user && !permittedRoutes.includes(pathname)) {
       router.push("/login");
     }
-  }, [user, router, permittedRoutes]);
+  }, [user, router, permittedRoutes,pathname]);
 
   return <>{children}</>; // Render children if no redirect occurs
 };

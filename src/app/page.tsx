@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import Menu1 from "./menu1/page";
 
 export default function Home() {

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import logo from "@/assetes/company-icon.png";
 import ThemeToggle from "../Theme/ThemeToggle";
@@ -39,7 +39,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="py-[1rem] w-full z-50 ">
+    <div className="p-[1rem] w-full z-50 ">
       <div className="relative max-w-screen-xl mx-auto px-5 lg:px-0 flex items-center justify-between z-50">
         <div className="flex gap-10">
           <Link href="/" className="flex gap-1">
@@ -55,7 +55,7 @@ const Navbar = () => {
 
           <nav className="hidden lg:flex items-center justify-between">
             <ul className="flex gap-[24px] ">
-              {userInfo &&
+              {
                 navigation?.map((item) => (
                   <li key={item.label} className="relative group">
                     <Link
@@ -133,7 +133,12 @@ const Navbar = () => {
 
         {settingPopUp && (
           <div className="absolute top-16 right-4 w-80 h-32 bg-white dark:bg-paperDark border dark:text-textDark shadow-md z-[1000]">
-            <div className=" w-1/4 h-32 bg-primary">
+            <div className=" w-1/4 h-32 bg-primary ">
+              <RxCross2
+                onClick={() => setSettingPopUp(false)}
+                className="text-2xl absolute top-2 left-1 cursor-pointer"
+              />
+
               <div className="absolute top-2 left-12 ">
                 <div className="flex gap-3">
                   <FaUserCircle className="text-6xl text-primaryDark bg-white rounded-full" />
@@ -190,28 +195,27 @@ const Navbar = () => {
 
               <nav className=" lg:hidden ">
                 <ul className="">
-                  {userInfo &&
-                    navigation?.map((item) => (
-                      <li key={item.label} className="relative group">
-                        <Link
-                          href={item.url}
-                          className={`text-base leading-[18px] font-bold flex flex-col gap-1 mt-5
+                  {navigation?.map((item) => (
+                    <li key={item.label} className="relative group">
+                      <Link
+                        href={item.url}
+                        className={`text-base leading-[18px] font-bold flex flex-col gap-1 mt-5
                     ${
                       pathname === item.url
                         ? "text-primaryDark dark:text-primaryLight" // Highlight active route
                         : "text-textSecondary dark:text-textDark"
                     }
                     `}
-                        >
-                          {item?.label}
-                          <span
-                            className={`${
-                              pathname === item.url ? "block" : "hidden"
-                            }  border-[3px] w-1/4 border-primary rounded-md`}
-                          ></span>
-                        </Link>
-                      </li>
-                    ))}
+                      >
+                        {item?.label}
+                        <span
+                          className={`${
+                            pathname === item.url ? "block" : "hidden"
+                          }  border-[3px] w-1/4 border-primary rounded-md`}
+                        ></span>
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </nav>
 

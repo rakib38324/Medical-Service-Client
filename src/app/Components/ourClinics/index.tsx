@@ -1,5 +1,4 @@
 import Image from "next/image";
-import c1 from "@/assetes/cl-1.png";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
 import { HiOutlineMailOpen } from "react-icons/hi";

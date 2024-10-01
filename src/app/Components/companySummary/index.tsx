@@ -1,12 +1,15 @@
+type Tsummary = {
+  doctors: number;
+  clinic: number;
+  specialist: number;
+};
+
+
 export default function CompanySummary({
   doctors,
   clinic,
   specialist,
-}: {
-  doctors: number;
-  clinic: number;
-  specialist: number;
-}) {
+}: Tsummary) {
   return (
     <div className="w-11/12 mx-auto grid md:grid-cols-3 gap-10">
       <div className="">

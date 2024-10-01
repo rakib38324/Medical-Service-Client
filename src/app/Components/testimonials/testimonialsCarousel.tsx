@@ -1,9 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import d1 from "@/assetes/d-1.png"; // If you plan to use these images, ensure they are imported or handled correctly
-import d2 from "@/assetes/d-2.png"; // These imports seem unused in the component currently
-import d3 from "@/assetes/d-3.png";
 import card from "@/assetes/bg-7.png";
 import { FaArrowLeft, FaArrowRight, FaStar } from "react-icons/fa";
 

@@ -58,7 +58,7 @@ export default function Menu1() {
     };
 
     getDoctor();
-  }, []);
+  }, [token]);
 
 
   //  fetch our clinic
@@ -99,7 +99,7 @@ export default function Menu1() {
     };
 
     getTestimonials();
-  }, []);
+  }, [token]);
 
   //  fetch our clinic
   useEffect(() => {
@@ -139,9 +139,9 @@ export default function Menu1() {
     };
 
     getClinics();
-  }, []);
+  }, [token]);
 
-  console.log(testimonials);
+  // console.log(testimonials);
   return (
     <div className="">
       <Banner />

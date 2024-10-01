@@ -9,7 +9,7 @@ const BannerCarousel = () => {
   const slider1 = () => {
     return (
       <div className="">
-        <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20  p-2 relative -z-10">
+        <div className="max-w-screen-xl mx-auto pt-60 md:pt-5 lg:pt-20  p-2 relative z-10">
           <p className="text-3xl md:text-5xl font-bold dark:text-textDark">
             Lorem ipsum dolor amet
           </p>
@@ -17,7 +17,7 @@ const BannerCarousel = () => {
             Nam sollicitud nunc, cursus eros vulputate sed. Vestibulum lobortis.
           </p>
 
-          <div className="mt-16 flex gap-5 ">
+          <div className="mt-16 flex gap-5 z-50">
             <p className="cursor-pointer text-secondary my-auto font-bold dark:text-secondaryLight dark:font-normal">
               MORE INFOR
             </p>
