@@ -32,12 +32,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased  dark:bg-defaultDark`}
       >
-        <ProtectedRoute>
-          <Toaster />
-          <Navbar />
-          {children}
-          <Footer />
-        </ProtectedRoute>
+        {/* <ProtectedRoute> */}
+        <Toaster />
+        <Navbar />
+        {children}
+        <Footer />
+        {/* </ProtectedRoute> */}
       </body>
     </html>
   );

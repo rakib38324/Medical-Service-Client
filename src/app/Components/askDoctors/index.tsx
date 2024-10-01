@@ -1,23 +1,72 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { BsHandbagFill } from "react-icons/bs";
-import { SlLike } from "react-icons/sl";
 import PrimaryButton from "../common/PrimaryButton";
 import Image from "next/image";
 import bg6 from "@/assetes/bg-6.png";
+import {
+  getTokenFromLocalStorage,
+  getUserFromLocalStorage,
+} from "../common/utilis";
+import { Tuser } from "@/app/appointment/[id]/page";
+import axios, { AxiosResponse } from "axios";
 
 export type TDoctor = {
+  _id?: string;
   name: string;
   specialist: string;
   like: string;
   experience: number;
   img: string;
+  amount: number;
+  appointments: [];
 };
 
 export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
   const [navigator, setNavigator] = useState(1);
   const [special, setSpecial] = useState("");
+  const [userInfo, setUserInfo] = useState<Tuser>();
+
+  const token = getTokenFromLocalStorage() as string | null;
+  const user: any = getUserFromLocalStorage();
+  useEffect(() => {
+    if (user && !userInfo) {
+      const fetchMe = async () => {
+        try {
+          const response: AxiosResponse = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/auth/me`,
+
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `${token}`, // Ensure the token format is correct
+              },
+            }
+          );
+
+          if (response.data?.success) {
+            setUserInfo(response.data.data);
+          } else {
+            console.error("Failed to create Appointment:", response.status);
+          }
+        } catch (error) {
+          // Type narrowing for AxiosError
+          if (axios.isAxiosError(error)) {
+            const errorMessage =
+              (error.response?.data as { errorMessage?: string })
+                ?.errorMessage || "Oops! Something went wrong. Try again.";
+
+            console.error("Error", errorMessage);
+          } else {
+            console.error("An unexpected error occurred:", error);
+          }
+        }
+      };
+
+      fetchMe();
+    }
+  }, [user]);
 
   // Function to get doctors by specialist name
   function getDoctorsBySpecialist(specialist: string): TDoctor[] {
@@ -26,9 +75,14 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
     );
   }
 
-  const doctors = special === "All"  ? Doctors: special ? getDoctorsBySpecialist(special) : Doctors;
+  const doctors =
+    special === "All"
+      ? Doctors
+      : special
+      ? getDoctorsBySpecialist(special)
+      : Doctors;
 
-  console.log(Doctors);
+  // console.log(Doctors);
   const specialists = [
     {
       id: 1,
@@ -52,7 +106,6 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
     },
   ];
 
- 
   return (
     <div className="max-w-screen-xl mx-auto my-10 md:my-20 grid md:grid-cols-5 p-1 relative">
       <div className="md:col-span-1">
@@ -105,7 +158,7 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
               </p>
             </div>
             <hr className="my-4" />
-            <div className="text-textSecondary dark:text-textDark flex justify-around">
+            <div className="text-textSecondary dark:text-textDark flex gap-2 justify-around">
               <div className="flex gap-3 ">
                 <AiFillLike className="my-auto text-xl " />
                 <p className="my-auto">{doctor.like}</p>
@@ -115,12 +168,30 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
                 <p className="my-auto">{doctor.experience} Year</p>
               </div>
 
-              <PrimaryButton
-                text="CHAT"
-                link="/chat"
-                bgColor="bg-secondary"
-                darkTextColor="dark:text-textDark"
-              />
+              {
+                // Check if doctor.appointments is defined and is an array
+                Array.isArray(doctor.appointments) &&
+                doctor.appointments.some((appointment: any) => {
+                  return (
+                    appointment?.userId?.toString() ===
+                    userInfo?._id?.toString()
+                  );
+                }) ? (
+                  <PrimaryButton
+                    text="Chat"
+                    link={`/chat`}
+                    bgColor="bg-secondary"
+                    darkTextColor="dark:text-textDark"
+                  />
+                ) : (
+                  <PrimaryButton
+                    text="Take Appointment"
+                    link={`/appointment/${doctor._id}`}
+                    bgColor="bg-secondary"
+                    darkTextColor="dark:text-textDark"
+                  />
+                )
+              }
             </div>
           </div>
         ))}

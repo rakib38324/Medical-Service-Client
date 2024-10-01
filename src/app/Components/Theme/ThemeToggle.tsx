@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
 import { FaMoon } from "react-icons/fa";
 import { IoMdSunny } from "react-icons/io";
 
-const { useState, useEffect } = require("react")
 
 const ThemeToggle = () => {
-    const [darkMode, setDarkMode] = useState();
+    const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
         const theme = localStorage.getItem("theme");
@@ -30,12 +30,11 @@ const ThemeToggle = () => {
         <div
             onClick={() => setDarkMode(!darkMode)}
             className="cursor-pointer relative w-14 h-6 md:w-16 md:h-8 flex items-center  dark:bg-gray-600 border border-white bg-blue-500 rounded-full p-1">
-            <FaMoon className="text-white" size={18} />
-            <div className="mx-1 absolute bg-white w-4 h-4 md:w-5 md:h-6 rounded-full shadow-md transform transition-transform duration-300"
-                style={darkMode ? { left: "2px" } : { right: "2px" }}
+            <FaMoon className="text-white size-4"  />
+            <div className={`mx-1 absolute ${darkMode ? "left-[2px]" : "right-[2px]"} bg-white w-4 h-4 md:w-5 md:h-6 rounded-full shadow-md transform transition-transform duration-300`}
             ></div>
 
-            <IoMdSunny className="ml-auto text-yellow-300 " size={18} />
+            <IoMdSunny className="ml-auto text-yellow-300 "  />
         </div>
     )
 }

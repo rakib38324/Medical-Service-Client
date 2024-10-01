@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import ban from '@/assetes/bg-8.png'
 import PrimaryButton from './Components/common/PrimaryButton';
