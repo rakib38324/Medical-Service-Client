@@ -1,9 +1,7 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import axios, { AxiosResponse } from "axios";
-import {
-  getTokenFromLocalStorage,
-} from "../common/utilis";
+import { getTokenFromLocalStorage } from "../common/utilis";
 import toast from "react-hot-toast";
 
 // Define the expected structure of the API response
@@ -12,8 +10,13 @@ export interface PaymentIntentResponse {
   data: string; // Assuming 'data' contains the clientSecret
 }
 
-
-const CheckoutForm = ({ id, setPaymentId }: { id: string, setPaymentId: any }) => {
+const CheckoutForm = ({
+  id,
+  setPaymentId,
+}: {
+  id: string;
+  setPaymentId: (value: string) => void;
+}) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState<string>("");
@@ -132,20 +135,22 @@ const CheckoutForm = ({ id, setPaymentId }: { id: string, setPaymentId: any }) =
     } else if (paymentIntent) {
       setMessage(`Payment ${paymentIntent.status}`);
       console.log(paymentIntent);
-      setPaymentId(paymentIntent.id)
-      toast.success("Payment Complete", {id:toastId})
-
+      setPaymentId(paymentIntent.id);
+      toast.success("Payment Complete", { id: toastId });
     }
   };
 
   return (
-    <form className="my-10 border p-5 rounded-lg" onSubmit={handleSubmit}>
+    <form
+      className="my-10 border p-5 bg-gray-50 dark:bg-[#333520b1] rounded-lg"
+      onSubmit={handleSubmit}
+    >
       <CardElement
         options={{
           style: {
             base: {
-              fontSize: "16px",
-              color: "#424770",
+              fontSize: "18px",
+              color: "#00579b",
               "::placeholder": {
                 color: "#aab7c4",
               },

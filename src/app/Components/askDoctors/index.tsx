@@ -29,7 +29,7 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
   const [userInfo, setUserInfo] = useState<Tuser>();
 
   const token = getTokenFromLocalStorage() as string | null;
-  const user: any = getUserFromLocalStorage();
+  const user = getUserFromLocalStorage();
   useEffect(() => {
     if (user && !userInfo) {
       const fetchMe = async () => {
@@ -66,7 +66,7 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
 
       fetchMe();
     }
-  }, [user]);
+  }, [user, userInfo, token]);
 
   // Function to get doctors by specialist name
   function getDoctorsBySpecialist(specialist: string): TDoctor[] {
@@ -134,7 +134,7 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
         )}
       </div>
 
-      <div className="md:col-span-4 grid lg:grid-cols-2 gap-10 pl-10  pt-10 md:pt-0">
+      <div className="md:col-span-4 grid lg:grid-cols-2 gap-10 md:pl-10  pt-10 md:pt-0">
         {doctors?.map((doctor, i) => (
           <div
             key={i}
@@ -171,12 +171,18 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
               {
                 // Check if doctor.appointments is defined and is an array
                 Array.isArray(doctor.appointments) &&
-                doctor.appointments.some((appointment: any) => {
-                  return (
-                    appointment?.userId?.toString() ===
-                    userInfo?._id?.toString()
-                  );
-                }) ? (
+                doctor.appointments.some(
+                  (appointment: {
+                    userId: string;
+                    doctorId: string;
+                    paymentId: string;
+                  }) => {
+                    return (
+                      appointment?.userId?.toString() ===
+                      userInfo?._id?.toString()
+                    );
+                  }
+                ) ? (
                   <PrimaryButton
                     text="Chat"
                     link={`/chat`}
