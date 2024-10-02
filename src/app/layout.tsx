@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "./Components/navbar";
 import Footer from "./Components/footer";
 import { Toaster } from "react-hot-toast";
-import ProtectedRoute from "./Components/protectedRouter";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased  dark:bg-defaultDark`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased  dark:bg-defaultDark md:p-2`}
       >
         {/* <ProtectedRoute> */}
         <Toaster />

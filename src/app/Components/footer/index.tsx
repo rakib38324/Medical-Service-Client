@@ -11,7 +11,7 @@ import { FaAngleDown } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <div className="max-w-[1440px]  mx-auto bg-red-500 relative my-5 md:my-0">
+    <div className="max-w-[1440px]  mx-auto  relative my-5 md:my-0">
       <div className="absolute top-1/2 left-0  w-full max-w-screen-xl mx-auto ">
         <div className="pt-5 grid lg:grid-cols-6 gap-5">
           <div className="lg:col-span-2">
@@ -134,10 +134,10 @@ export default function Footer() {
             <div className="flex lg:justify-end gap-3 mt-5 cursor-pointer dark:bg-paperDark my-5 dark:text-textDark">
               <div className="border border-primary p-2 rounded-md flex gap-8">
                 <div className="flex gap-1">
-                  <BiWorld className="my-auto text-3xl" />
+                  <BiWorld className="my-auto text-2xl" />
                   <p className="text-base my-auto ">English - En</p>
                 </div>
-                <FaAngleDown className="my-auto text-2xl" />
+                <FaAngleDown className="my-auto text-xl" />
               </div>
             </div>
           </div>

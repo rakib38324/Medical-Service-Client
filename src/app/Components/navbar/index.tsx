@@ -166,7 +166,7 @@ const Navbar = () => {
         {/* Mobile navbar proup */}
 
         {mobileNavPopUp && (
-          <div className="absolute top-16 right-0 w-4/5 md:w-1/2 lg:hidden min-h-screen bg-white dark:bg-paperDark border dark:text-textDark shadow-md z-[1000]">
+          <div className="absolute top-16 -right-4 w-4/5 md:w-1/2 lg:hidden min-h-screen bg-white dark:bg-paperDark border dark:text-textDark shadow-md z-[1000]">
             <div className="relative p-5">
               <RxCross2
                 onClick={() => setMobileNavPopUp(false)}

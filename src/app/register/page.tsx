@@ -54,6 +54,7 @@ export default function Register() {
           { id: toastId }
         );
         setMessage("Email verification code sended.");
+        setError("")
         console.log("User registered successfully:", data);
       } else {
         toast.error(data?.message, { id: toastId });

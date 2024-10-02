@@ -50,9 +50,8 @@ export default function AppointmentPage({ params }: AppointmentPageProps) {
   const token = getTokenFromLocalStorage() as string | null;
   const { id } = params; // Get the doctor ID from the URL
 
+  const user = getUserFromLocalStorage();
 
-
-  const user: any = getUserFromLocalStorage();
   useEffect(() => {
     if (user && !userInfo) {
       const fetchMe = async () => {
@@ -91,7 +90,7 @@ export default function AppointmentPage({ params }: AppointmentPageProps) {
 
       fetchMe();
     }
-  }, [user]);
+  }, [user, userInfo, token]);
 
   // Check the user token and redirect if not available
   useEffect(() => {
@@ -149,7 +148,15 @@ export default function AppointmentPage({ params }: AppointmentPageProps) {
       };
       takeapointment();
     }
-  }, [paymentId, id, userInfo, router, setTakeAppointment]);
+  }, [
+    paymentId,
+    id,
+    userInfo,
+    router,
+    token,
+    takeAppointment,
+    setTakeAppointment,
+  ]);
 
   useEffect(() => {
     (async () => {
@@ -185,7 +192,7 @@ export default function AppointmentPage({ params }: AppointmentPageProps) {
     })();
   }, [id, token]);
 
-  console.log(error)
+  console.log(error);
   return (
     <div className="max-w-screen-xl mx-auto my-20  dark:text-textDark md:flex justify-center items-center gap-5 p-1">
       <div>
