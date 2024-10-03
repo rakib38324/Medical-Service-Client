@@ -33,8 +33,10 @@ const stripePromise = loadStripe(
 );
 
 export type Tuser = {
+  appointments: [];
   name: string;
   email: string;
+  isDoctor?: boolean;
   _id: string;
 };
 
