@@ -1,3 +1,6 @@
+import { Tuser } from "@/app/appointment/[id]/page";
+import axios, { AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
 
 // Function to save token and user info into localStorage
 export const saveToLocalStorage = (
@@ -55,4 +58,55 @@ export const removeUserAndToken = (): void => {
   localStorage.removeItem("userInfo");
 
   console.log("User and token have been removed from localStorage.");
+};
+
+export const useGetMeFromDataBase = () => {
+  const [userInfo, setUserInfo] = useState<Tuser>();
+
+  const token = getTokenFromLocalStorage() as string | null;
+  const user = getUserFromLocalStorage();
+  useEffect(() => {
+    if (user && !userInfo) {
+      const fetchMe = async () => {
+        try {
+          const response: AxiosResponse = await axios.get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/auth/me`,
+
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `${token}`, // Ensure the token format is correct
+              },
+            }
+          );
+
+          if (response.data?.success) {
+            setUserInfo(response.data.data);
+          } else {
+            console.error("Failed to create Appointment:", response.status);
+          }
+        } catch (error) {
+          // Type narrowing for AxiosError
+          if (axios.isAxiosError(error)) {
+            const errorMessage =
+              (error.response?.data as { errorMessage?: string })
+                ?.errorMessage || "Oops! Something went wrong. Try again.";
+
+            console.error("Error", errorMessage);
+          } else {
+            console.error("An unexpected error occurred:", error);
+          }
+        }
+      };
+
+      fetchMe();
+    }
+  }, [user, userInfo, token]);
+
+  if(userInfo){
+    return userInfo;
+  }
+  else{
+    return null
+  }
 };

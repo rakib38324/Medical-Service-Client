@@ -11,6 +11,7 @@ import {
 } from "../common/utilis";
 import { Tuser } from "@/app/appointment/[id]/page";
 import axios, { AxiosResponse } from "axios";
+import { useChat } from "@/app/Hooks/ChatContext";
 
 export type TDoctor = {
   _id?: string;
@@ -30,6 +31,9 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
 
   const token = getTokenFromLocalStorage() as string | null;
   const user = getUserFromLocalStorage();
+
+  const { fetchMe } = useChat();
+
   useEffect(() => {
     if (user && !userInfo) {
       const fetchMe = async () => {
@@ -183,12 +187,14 @@ export default function AskDoctors({ Doctors }: { Doctors: TDoctor[] }) {
                     );
                   }
                 ) ? (
-                  <PrimaryButton
-                    text="Chat"
-                    link={`/chat`}
-                    bgColor="bg-secondary"
-                    darkTextColor="dark:text-textDark"
-                  />
+                  <div onClick={() => fetchMe()}>
+                    <PrimaryButton
+                      text="Chat"
+                      link={`/privatechat`}
+                      bgColor="bg-secondary"
+                      darkTextColor="dark:text-textDark"
+                    />
+                  </div>
                 ) : (
                   <PrimaryButton
                     text="Take Appointment"

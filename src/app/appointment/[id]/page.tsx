@@ -14,6 +14,7 @@ import Image from "next/image";
 import { AiFillLike } from "react-icons/ai";
 import { BsHandbagFill } from "react-icons/bs";
 import { TDoctor } from "@/app/Components/askDoctors";
+import { useChat } from "@/app/Hooks/ChatContext";
 
 interface AppointmentPageProps {
   params: {
@@ -33,8 +34,10 @@ const stripePromise = loadStripe(
 );
 
 export type Tuser = {
+  appointments: [];
   name: string;
   email: string;
+  isDoctor?: boolean;
   _id: string;
 };
 
@@ -45,6 +48,9 @@ export default function AppointmentPage({ params }: AppointmentPageProps) {
   const [paymentId, setPaymentId] = useState("");
   const [userInfo, setUserInfo] = useState<Tuser>();
   const [takeAppointment, setTakeAppointment] = useState(true);
+
+  const { fetchMe } = useChat();
+
 
   // This assumes the token can be a string or null (depending on your implementation)
   const token = getTokenFromLocalStorage() as string | null;
@@ -126,6 +132,7 @@ export default function AppointmentPage({ params }: AppointmentPageProps) {
 
             if (response.data?.success) {
               setTakeAppointment(false);
+              fetchMe();
               router.push("/");
             } else {
               console.error("Failed to create Appointment:", response.status);

@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 
 export default function Register() {
   const [name, setName] = useState("");
+  const [isDoctor, setIsDoctor] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conPassword, setConPassword] = useState("");
@@ -32,6 +33,7 @@ export default function Register() {
       name,
       email,
       password,
+      isDoctor,
     };
 
     try {
@@ -54,7 +56,7 @@ export default function Register() {
           { id: toastId }
         );
         setMessage("Email verification code sended.");
-        setError("")
+        setError("");
         console.log("User registered successfully:", data);
       } else {
         toast.error(data?.message, { id: toastId });
@@ -77,14 +79,15 @@ export default function Register() {
     }
   };
 
-  const resetFiled = ()=>{
+  const resetFiled = () => {
     setName("");
     setEmail("");
     setPassword("");
     setConPassword("");
-    setEmail("")
-  }
+    setEmail("");
+  };
 
+  console.log(isDoctor);
   return (
     <div className="max-w-screen-xl mx-auto my-20">
       <div className="lg:flex lg:flex-row-reverse  gap-5 p-1">
@@ -206,10 +209,23 @@ export default function Register() {
                 </div>
               </div>
 
+              <div className="flex gap-3 mt-5">
+                <input
+                  className="size-6 my-auto cursor-pointer"
+                  type="checkbox"
+                  name="checkbox"
+                  id="checkbox"
+                  onClick={() => setIsDoctor(!isDoctor)}
+                />
+                <p className="text-base dark:text-textDark my-auto">
+                  I am a Doctor. So, My profile will made as a doctor profile.
+                </p>
+              </div>
+
               {message && <p className="text-green-500 italic">{message}</p>}
 
               {message && (
-                <div className=" mx-auto text-center my-20">
+                <div className=" mx-auto text-center my-10">
                   <p className="text-3xl  font-bold">Account Verification</p>
                   <p className="text-xl my-2">
                     Thank you so much for Register with us. Check your email. We
@@ -220,7 +236,7 @@ export default function Register() {
 
               {error && <p className="text-red-500 italic">{error}</p>}
 
-              <div className="md:flex justify-between mt-8">
+              <div className="md:flex justify-between mt-5">
                 <div className="flex gap-3">
                   <input
                     className="size-6 mt-2 cursor-pointer"

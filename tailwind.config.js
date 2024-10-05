@@ -27,10 +27,23 @@ module.exports = {
         textPrimary: "#212121",
         textSecondary: "#757575",
         textDark: "#FFFFFF",
-        defaultDark:"#303030",
-        defaultWhite:"#FAFAFA",
+        defaultDark: "#303030",
+        defaultWhite: "#FAFAFA",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          /* Hide scrollbar for Chrome, Safari, and Opera */
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          /* Hide scrollbar for IE, Edge, and Firefox */
+          '-ms-overflow-style': 'none', /* IE and Edge */
+          'scrollbar-width': 'none', /* Firefox */
+        },
+      });
+    },],
 }

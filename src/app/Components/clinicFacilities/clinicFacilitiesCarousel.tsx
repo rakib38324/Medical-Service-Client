@@ -303,7 +303,7 @@ export default function CleinetFacilitiesCarusole() {
 
       <div className="lg:col-span-2">
         <div className="carousel  relative">
-          {slides.map((slide, index) => (
+          {slides?.map((slide, index) => (
             <div
               key={index}
               className={`carousel-item absolute w-full transition-opacity duration-700 ease-in-out ${
