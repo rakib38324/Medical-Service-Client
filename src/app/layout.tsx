@@ -5,6 +5,7 @@ import Navbar from "./Components/navbar";
 import Footer from "./Components/footer";
 import { Toaster } from "react-hot-toast";
 import Chatting from "./Components/common/chating";
+import { ChatProvider } from "./Hooks/ChatContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,13 +33,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased  dark:bg-defaultDark md:p-2`}
       >
-        {/* <ProtectedRoute> */}
-        <Toaster />
-        <Chatting />
-        <Navbar />
-        {children}
-        <Footer />
-        {/* </ProtectedRoute> */}
+        <ChatProvider>
+          <Toaster />
+          <Chatting />
+          <Navbar />
+          {children}
+          <Footer />
+        </ChatProvider>
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { LiaGoogle } from "react-icons/lia";
@@ -8,20 +8,20 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { saveToLocalStorage } from "../Components/common/utilis";
+import { useChat } from "../Hooks/ChatContext";
 
 export default function Register() {
-
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const router = useRouter();
-  
+
+  const { fetchMe } = useChat();
+
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const toastId = toast.loading("Processing...");
-
 
     const formData = {
       email,
@@ -44,7 +44,8 @@ export default function Register() {
       if (data?.success === true) {
         toast.success(data.message, { id: toastId });
         saveToLocalStorage(data?.data?.token, data?.data?.user);
-        router.push('/')
+        fetchMe();
+        router.push("/");
       } else {
         toast.error(data?.message, { id: toastId });
         console.error("Failed to register user:", response.status);
@@ -147,7 +148,6 @@ export default function Register() {
 
             {error && <p className="text-red-500 italic">{error}</p>}
 
-
             <div className="md:flex justify-between mt-8">
               <div className="flex gap-3">
                 <input
@@ -158,7 +158,9 @@ export default function Register() {
                 />
                 <p className="text-lg dark:text-textDark my-auto">Remember</p>
               </div>
-                <p className="my-auto text-primary cursor-pointer hover:border-b hover:border-primary">Forget Password?</p>
+              <p className="my-auto text-primary cursor-pointer hover:border-b hover:border-primary">
+                Forget Password?
+              </p>
             </div>
             <div className="my-auto mt-10 w-full flex justify-center">
               <input

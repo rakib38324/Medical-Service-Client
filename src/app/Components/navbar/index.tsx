@@ -22,6 +22,7 @@ const Navbar = () => {
 
   const userInfo = getUserFromLocalStorage();
 
+
   const navigation = [
     { label: "Menu1", url: "/" },
     { label: "Menu2", url: "/menu2" },
@@ -55,28 +56,27 @@ const Navbar = () => {
 
           <nav className="hidden lg:flex items-center justify-between">
             <ul className="flex gap-[24px] ">
-              {
-                navigation?.map((item) => (
-                  <li key={item.label} className="relative group">
-                    <Link
-                      href={item.url}
-                      className={`text-base leading-[18px] font-bold flex flex-col gap-1 mt-3
+              {navigation?.map((item) => (
+                <li key={item.label} className="relative group">
+                  <Link
+                    href={item.url}
+                    className={`text-base leading-[18px] font-bold flex flex-col gap-1 mt-3
                     ${
                       pathname === item.url
                         ? "text-primaryDark dark:text-primaryLight" // Highlight active route
                         : "text-textSecondary dark:text-textDark"
                     }
                     `}
-                    >
-                      {item?.label}
-                      <span
-                        className={`${
-                          pathname === item.url ? "block" : "hidden"
-                        }  border-[3px] w-3/5 border-primary rounded-md`}
-                      ></span>
-                    </Link>
-                  </li>
-                ))}
+                  >
+                    {item?.label}
+                    <span
+                      className={`${
+                        pathname === item.url ? "block" : "hidden"
+                      }  border-[3px] w-3/5 border-primary rounded-md`}
+                    ></span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
@@ -198,6 +198,7 @@ const Navbar = () => {
                   {navigation?.map((item) => (
                     <li key={item.label} className="relative group">
                       <Link
+                        onClick={() => setMobileNavPopUp(false)}
                         href={item.url}
                         className={`text-base leading-[18px] font-bold flex flex-col gap-1 mt-5
                     ${
@@ -221,7 +222,13 @@ const Navbar = () => {
 
               <div className="mt-10">
                 {userInfo ? (
-                  <div onClick={() => removeUserAndToken()} className="my-5">
+                  <div
+                    onClick={() => {
+                      removeUserAndToken();
+                      setMobileNavPopUp(false);
+                    }}
+                    className="my-5"
+                  >
                     <PrimaryButton
                       link="/login"
                       text="LOGOUT"
@@ -233,7 +240,10 @@ const Navbar = () => {
                   </div>
                 ) : (
                   <>
-                    <div className="my-5">
+                    <div
+                      onClick={() => setMobileNavPopUp(false)}
+                      className="my-5"
+                    >
                       <PrimaryButton
                         link="/login"
                         text="LOGIN"
@@ -244,14 +254,16 @@ const Navbar = () => {
                       />
                     </div>
 
-                    <PrimaryButton
-                      link="/register"
-                      text="REGISTER"
-                      textColor="text-white"
-                      darkTextColor="text-text-Dark"
-                      bgColor="bg-secondary"
-                      weidth="w-full"
-                    />
+                    <div onClick={() => setMobileNavPopUp(false)}>
+                      <PrimaryButton
+                        link="/register"
+                        text="REGISTER"
+                        textColor="text-white"
+                        darkTextColor="text-text-Dark"
+                        bgColor="bg-secondary"
+                        weidth="w-full"
+                      />
+                    </div>
                   </>
                 )}
               </div>
